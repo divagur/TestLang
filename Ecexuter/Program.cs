@@ -24,7 +24,7 @@ namespace Ecexuter
         public const int ADD = 0, SUB = 1, MUL = 2, DIV = 3, MOV = 4;
 
         Dictionary<String, int> vars = new Dictionary<string, int>();
-        List<Command> commandList = new List<Command>();
+        List<Command> commandList = new List<String>();
         int currCommand;
 
         public void AddCommand(int Type, int OpAddr1, int OpAddr2, int ResAddr)
