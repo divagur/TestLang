@@ -24,12 +24,32 @@ namespace Ecexuter
         public const int ADD = 0, SUB = 1, MUL = 2, DIV = 3, MOV = 4;
 
         Dictionary<String, int> vars = new Dictionary<string, int>();
-        List<Command> commandList = new List<String>();
-        int currCommand;
+        List<String> commandList = new List<String>();
+        int currCommandIdx;
 
-        public void AddCommand(int Type, int OpAddr1, int OpAddr2, int ResAddr)
+        public void AddCommand(string command)
         {
-            commandList.Add(new Command(){ Type = Type, OpAddr1 = OpAddr1, OpAddr2 = OpAddr2, ResAddr =ResAddr });
+            commandList.Add(command);
+        }
+
+        private bool ExecCommand(int commandIdx)
+        {
+            string commandMnem = commandList[commandIdx].Substring(0, 6).Trim();
+            string commandParam = commandList[commandIdx].Substring(7, commandList[commandIdx].Length-6).Trim();
+            string[] param = commandParam.Split(new char[] { ' ' });
+
+            return false;
+        }
+
+        public bool Exec()
+        {
+            currCommandIdx = 0;
+            for(int i=0;i<commandList.Count;i++)
+            {
+                ExecCommand(currCommandIdx++);
+
+            }
+            return true;
         }
 
     }
